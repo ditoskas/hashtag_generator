@@ -290,6 +290,13 @@ return [
             'levels' => ['notice', 'info', 'debug'],
             'url' => env('LOG_DEBUG_URL', null),
         ],
+        'hashtags' => [
+            'className' => 'Cake\Log\Engine\FileLog',
+            'path' => LOGS,
+            'file' => 'hashtags.log',
+            'scopes' => ['hashtags'],
+            'levels' => [],
+        ],
         'error' => [
             'className' => 'Cake\Log\Engine\FileLog',
             'path' => LOGS,

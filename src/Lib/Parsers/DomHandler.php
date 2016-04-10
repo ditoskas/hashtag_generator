@@ -2,7 +2,7 @@
 namespace App\Lib\Parsers;
 
 use PHPHtmlParser\Dom;
-
+use Cake\Log\Log;
 /**
  * Interface to manipulate the page source code as xml
  * Class DomHandler
@@ -14,6 +14,7 @@ class DomHandler {
     public function __construct($url){
         $this->_url = $url;
         $this->_dom = new Dom();
+        Log::info('Generate hashtags for '.$url,'hashtags');
         $this->_dom->load($this->_url);
     }
 
