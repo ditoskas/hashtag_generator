@@ -1,0 +1,20 @@
+#main-menu.navbar-default {
+    background-color: transparent;
+    font-family: 'Oswald', sans-serif;
+}
+
+#main-menu.navbar-default .navbar-nav > li > a:focus,
+#main-menu.navbar-default .navbar-nav > li > a:hover{
+    background: none;
+    color: #337AB7;
+}
+#main-menu.navbar-default .navbar-nav > li.active > a {
+    background: none;
+    color: #337AB7;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: transparent;
+    color: #285E8E;
+}
