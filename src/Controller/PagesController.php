@@ -22,6 +22,7 @@ use PHPHtmlParser\Exceptions\EmptyCollectionException;
 use PHPHtmlParser\Exceptions\CurlException;
 use App\Lib\Parsers;
 use App\Lib\Parsers\WebsiteParser;
+use App\Lib\Parsers\AlchemyParser;
 use Cake\Validation\Validator;
 /**
  * Static content controller
@@ -77,6 +78,22 @@ class PagesController extends AppController
                             'reason'    =>  $ex->getMessage()
                         ];
                     }
+                }//catch
+                //if the execution is success continue with the AlchemyAPI
+                $alhemyHandler = new AlchemyParser($url);
+                try {
+                    $hashtagsFromAlchemy = $alhemyHandler->parse();
+                    for ($i = 0; $i < count($hashtagsFromAlchemy); $i++){
+                        if (array_search($hashtagsFromAlchemy[$i],$result['hashtags']) === false ){
+                            $result['hashtags'][] = $hashtagsFromAlchemy[$i];
+                        }
+                    }
+                }
+                catch (\Exception $ex){
+                    $result = [
+                        'type'      =>  'fail',
+                        'reason'    =>  $ex->getMessage()
+                    ];
                 }
             }
             else {
